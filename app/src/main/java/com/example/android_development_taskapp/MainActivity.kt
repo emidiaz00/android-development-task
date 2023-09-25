@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     private val listaTareas: MutableList<Tarea> = mutableListOf()
     private lateinit var adapter: TareasAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,15 +33,11 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, 1)
         }
     }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-
         if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null) {
-
             val titulo = data.getStringExtra("titulo")
-
             if (!titulo.isNullOrEmpty()) {
                 val nuevaTarea = Tarea(titulo)
                 listaTareas.add(nuevaTarea)
